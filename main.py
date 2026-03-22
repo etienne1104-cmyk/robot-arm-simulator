@@ -35,9 +35,9 @@ ax_slider1 = plt.axes([0.2, 0.15, 0.6, 0.03])
 ax_slider2 = plt.axes([0.2, 0.05, 0.6, 0.03])
 slider_t1 = Slider(ax_slider1, "theta1", -180, 180, valinit=45)
 slider_t2 = Slider(ax_slider2, "theta2", -180, 180, valinit=45)
-line, = ax.plot(x_points, y_points)
-ax.set_xlim(-10,10)
-ax.set_ylim(-10,10)
+line, = ax.plot(x_points, y_points,"-g",marker="o",markersize=7)
+ax.set_xlim(-8,8)
+ax.set_ylim(-8,8)
 
 def update(val):
     theta1 = slider_t1.val
