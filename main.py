@@ -35,9 +35,10 @@ ax_slider1 = plt.axes([0.2, 0.15, 0.6, 0.03])
 ax_slider2 = plt.axes([0.2, 0.05, 0.6, 0.03])
 slider_t1 = Slider(ax_slider1, "theta1", -180, 180, valinit=45)
 slider_t2 = Slider(ax_slider2, "theta2", -180, 180, valinit=45)
-line, = ax.plot(x_points, y_points,"-g",marker="o",markersize=7)
+line, = ax.plot(x_points, y_points,"-b",marker="o",markersize=7)
 ax.set_xlim(-8,8)
 ax.set_ylim(-8,8)
+trajectory = []
 
 def update(val):
     theta1 = slider_t1.val
@@ -48,6 +49,21 @@ def update(val):
     line.set_xdata(x_points)
     line.set_ydata(y_points)
     fig.canvas.draw_idle()
+    trajectory.append((extremite[0], extremite[1]))
+    traj_x = [p[0] for p in trajectory]
+    traj_y = [p[1] for p in trajectory]
+    for L in ax.lines[1:]:
+        L.remove()
+    
+    n = len(trajectory)
+    for i in range(1,n):
+        alpha = i / n
+        ax.plot(
+            [trajectory[i-1][0], trajectory[i][0]],
+            [trajectory[i-1][1], trajectory[i][1]],
+            "r-", alpha=alpha, linewidth=1
+        )
+
 slider_t1.on_changed(update)
 slider_t2.on_changed(update)
 plt.show()
