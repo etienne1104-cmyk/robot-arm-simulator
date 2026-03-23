@@ -57,7 +57,7 @@ def update(val):
     
     n = len(trajectory)
     for i in range(1,n):
-        alpha = i / n
+        alpha = i / 2*n
         ax.plot(
             [trajectory[i-1][0], trajectory[i][0]],
             [trajectory[i-1][1], trajectory[i][1]],
