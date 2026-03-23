@@ -6,7 +6,8 @@ the position of the end effector based on the joint angles.
 Built with Python, NumPy and Matplotlib.
 
 ## Demo
-![Demo](demo.gif)
+![Demo](Demo_robo.png)
+
 ## Installation
 1. Clone the repository
 ```bash
